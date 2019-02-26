@@ -4,7 +4,9 @@
 
 export const environment = {
 	production: false,
-	apiKey: 'a16f13a0c50b7c0a0d5da87e5b4b598b'
+	apiKey: 'dawwa'
+
+	// a16f13a0c50b7c0a0d5da87e5b4b598b
 };
 
 /*
