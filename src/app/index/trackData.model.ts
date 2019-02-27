@@ -1,7 +1,7 @@
 export class TrackData {
 	message: {
 		body: {
-			track_list: [{}];
+			track_list: [];
 		};
 	};
 }

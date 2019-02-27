@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { TrackData } from './trackData.model';
 import { Subject } from 'rxjs';
 
@@ -21,8 +20,21 @@ export class DataService {
 			)
 			.subscribe((res: TrackData) => {
 				this.topTracks = res.message.body.track_list;
-				this.tracksChanged.next([ ...this.topTracks ]);
+				this.tracksChanged.next([
+					...this.topTracks
+				]);
 			});
+	}
+
+	fetchLyrics(trackId) {
+		return this.http.get(
+			`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${trackId}&apikey=${this
+				.apiKey}`
+		);
+	}
+
+	getTrackInfo(id) {
+		return this.topTracks.find((track: any) => track.track.track_id === id);
 	}
 }
 

@@ -1,5 +1,9 @@
-<div class="tracks-container">
-  <app-track *ngFor="let track of tracks"
+<div class="tracks">
+  <h1>Top 10</h1>
+  <div class="tracks-container" *ngIf="tracks.length > 1">
+    <app-track *ngFor="let track of tracks; let i"
     [track]="track"
-  ></app-track>
+    ></app-track>
+  </div>
+  <div class="loading" *ngIf="tracks.length === 0"></div>
 </div>
