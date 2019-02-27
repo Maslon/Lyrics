@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+// import { TrackData } from '../trackData.model';
 
 @Component({
 	selector: 'app-tracks',
@@ -6,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: [ './tracks.component.css' ]
 })
 export class TracksComponent implements OnInit {
-	tracks = [ { name: 'brap' }, { name: 'kacer' } ];
+	tracks = [];
 
-	constructor() {}
+	constructor(private dataService: DataService) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.dataService.tracksChanged.subscribe(tracks => {
+			this.tracks = tracks;
+			console.log(this.tracks);
+		});
+	}
 }

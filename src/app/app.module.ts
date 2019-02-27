@@ -8,9 +8,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { IndexComponent } from './index/index.component';
 import { TracksComponent } from './index/tracks/tracks.component';
 import { SearchComponent } from './index/search/search.component';
+import { TrackComponent } from './index/tracks/track/track.component';
 
 @NgModule({
-	declarations: [ AppComponent, NavbarComponent, IndexComponent, TracksComponent, SearchComponent ],
+	declarations: [ AppComponent, NavbarComponent, IndexComponent, TracksComponent, SearchComponent, TrackComponent ],
 	imports: [ BrowserModule, AppRoutingModule, HttpClientModule ],
 	providers: [],
 	bootstrap: [ AppComponent ]
