@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-tracks',
@@ -8,15 +9,19 @@ import { DataService } from '../data.service';
 		'./tracks.component.css'
 	]
 })
-export class TracksComponent implements OnInit {
+export class TracksComponent implements OnInit, OnDestroy {
 	tracks = [];
+	trackSub: Subscription;
 
 	constructor(private dataService: DataService) {}
 
 	ngOnInit() {
-		this.dataService.tracksChanged.subscribe(tracks => {
+		this.trackSub = this.dataService.tracksChanged.subscribe(tracks => {
 			this.tracks = tracks.map((track: any) => track.track);
-			console.log(tracks);
 		});
+	}
+
+	ngOnDestroy() {
+		this.trackSub.unsubscribe();
 	}
 }

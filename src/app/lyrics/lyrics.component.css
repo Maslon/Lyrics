@@ -1,0 +1,25 @@
+.btn-back {
+	margin-left: 1.5rem;
+	padding: 0.5rem 1rem;
+	outline: none;
+	color: white;
+	text-decoration: none;
+	background: #2b292e;
+	border-radius: 5px;
+}
+
+.loading {
+	width: 500px;
+	height: 500px;
+	background: center no-repeat url("../../assets/images/giphy.gif");
+	margin: 0 auto;
+}
+
+.track-detail {
+	margin: 1.5rem;
+}
+
+.track-lyrics {
+	font-family: Merriweather;
+	word-spacing: 3px;
+}

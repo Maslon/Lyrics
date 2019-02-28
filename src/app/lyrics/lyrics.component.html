@@ -1,1 +1,23 @@
-<h1>Lyrics</h1>
+<a routerLink="/" class="btn-back"><i class="fas fa-chevron-left"></i> Go back</a>
+
+<div class="track-detail" *ngIf="track !== undefined && trackLyrics !== undefined">
+    <h1 class="track-header"> {{ track.track.track_name}} by {{ track.track.artist_name }}</h1>
+    <div class="track-content">
+        <p class="track-lyrics">
+            {{ trackLyrics }}
+        </p>
+    </div>
+    <hr>
+    <ul class="track-info">
+        <li class="info-item">
+            <strong>Album Id</strong>: {{ track.track.album_id }}
+        </li>
+        <li class="info-item">
+            <strong>Song genre</strong>: {{ track.track.primary_genres.music_genre_list[0].music_genre.music_genre_name }}
+        </li>
+        <li class="info-item" 
+        [innerHtml]="track.track.explicit === 1 ? '<strong>Explicit</strong>: Yes' : '<strong>Explicit</strong>: No'">
+        </li>
+    </ul>
+</div>
+<div class="loading" *ngIf="track === undefined || trackLyrics === undefined"></div>

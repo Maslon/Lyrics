@@ -20,6 +20,7 @@ export class DataService {
 			)
 			.subscribe((res: TrackData) => {
 				this.topTracks = res.message.body.track_list;
+				console.log(this.topTracks);
 				this.tracksChanged.next([
 					...this.topTracks
 				]);

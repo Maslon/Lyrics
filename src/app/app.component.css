@@ -1,11 +1,13 @@
 .container {
 	width: 100%;
+	margin-bottom: 2rem auto;
 }
 
 @media (min-width: 600px) {
 	.container {
 		width: 550px;
 		margin: 0 auto;
+		margin-bottom: 3rem;
 	}
 }
 
@@ -13,5 +15,6 @@
 	.container {
 		width: 750px;
 		margin: 0 auto;
+		margin-bottom: 3rem;
 	}
 }
