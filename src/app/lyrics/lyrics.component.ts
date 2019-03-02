@@ -21,13 +21,11 @@ export class LyricsComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.paramsSub = this.route.params.subscribe((params: Params) => {
 			this.track = this.dataService.getTrackInfo(+params['id']);
-			console.log(this.track);
 			this.dataService
 				.fetchLyrics(params['id'])
 				.pipe(map((res: any) => res.message.body.lyrics.lyrics_body))
 				.subscribe(lyrics => {
 					this.trackLyrics = lyrics;
-					console.log(this.trackLyrics);
 				});
 		});
 	}

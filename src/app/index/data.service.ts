@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class DataService {
 	apiKey = environment.apiKey;
-	topTracks: {}[] = [];
+	tracks: {}[] = [];
 	tracksChanged = new Subject<{}[]>();
 
 	constructor(private http: HttpClient) {}
@@ -19,10 +19,9 @@ export class DataService {
 					this.apiKey
 			)
 			.subscribe((res: TrackData) => {
-				this.topTracks = res.message.body.track_list;
-				console.log(this.topTracks);
+				this.tracks = res.message.body.track_list;
 				this.tracksChanged.next([
-					...this.topTracks
+					...this.tracks
 				]);
 			});
 	}
@@ -34,10 +33,21 @@ export class DataService {
 		);
 	}
 
+	searchTracks(text) {
+		return this.http
+			.get(
+				`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track_artist=${text}&apikey=${this
+					.apiKey}`
+			)
+			.subscribe((res: TrackData) => {
+				this.tracks = res.message.body.track_list;
+				this.tracksChanged.next([
+					...this.tracks
+				]);
+			});
+	}
+
 	getTrackInfo(id) {
-		return this.topTracks.find((track: any) => track.track.track_id === id);
+		return this.tracks.find((track: any) => track.track.track_id === id);
 	}
 }
-
-// https://api.musixmatch.com/ws/1.1/
-// chart.artists.get?page=1&page_size=3&country=it
