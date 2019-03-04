@@ -7,8 +7,9 @@ import { Subject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class DataService {
 	apiKey = environment.apiKey;
-	tracks: {}[] = [];
+	tracks: Array<Object> = [];
 	tracksChanged = new Subject<{}[]>();
+	topFetched = false;
 
 	constructor(private http: HttpClient) {}
 
@@ -36,15 +37,22 @@ export class DataService {
 	searchTracks(text) {
 		return this.http
 			.get(
-				`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track_artist=${text}&apikey=${this
-					.apiKey}`
+				`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=${text}
+				&page_size=10&page=1&s_track_rating=desc&apikey=${this.apiKey}`
 			)
 			.subscribe((res: TrackData) => {
 				this.tracks = res.message.body.track_list;
 				this.tracksChanged.next([
 					...this.tracks
 				]);
+				console.log(this.tracks);
 			});
+	}
+
+	getTracks() {
+		return [
+			...this.tracks
+		];
 	}
 
 	getTrackInfo(id) {

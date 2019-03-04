@@ -5,6 +5,7 @@
         <br>
         <strong><i class="fas fa-compact-disc"></i> Album</strong>: {{ track.album_name }}
     </p>
-    <a  [routerLink]="['/lyrics', track.track_id]"  class="view-button"><i class="fas fa-chevron-right"></i> View Lyrics</a>
+    <a *ngIf="track.has_lyrics === 1" [routerLink]="['/lyrics', track.track_id]"  class="view-button"><i class="fas fa-chevron-right"></i> View Lyrics</a>
+    <div *ngIf="track.has_lyrics === 0" class="notAvailable">Lyrics not Available</div>
 </div>
 

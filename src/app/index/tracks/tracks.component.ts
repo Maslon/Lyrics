@@ -16,9 +16,9 @@ export class TracksComponent implements OnInit, OnDestroy {
 	constructor(private dataService: DataService) {}
 
 	ngOnInit() {
+		this.tracks = this.dataService.getTracks().map((track: any) => track.track);
 		this.trackSub = this.dataService.tracksChanged.subscribe(tracks => {
 			this.tracks = tracks.map((track: any) => track.track);
-			// console.log(this.tracks);
 		});
 	}
 

@@ -12,7 +12,7 @@
         <li class="info-item">
             <strong>Album Id</strong>: {{ track.track.album_id }}
         </li>
-        <li class="info-item">
+        <li class="info-item" *ngIf="track.track.primary_genres.music_genre_list[0].music_genre.music_genre_name">
             <strong>Song genre</strong>: {{ track.track.primary_genres.music_genre_list[0].music_genre.music_genre_name }}
         </li>
         <li class="info-item" 

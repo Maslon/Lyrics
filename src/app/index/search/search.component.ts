@@ -13,12 +13,9 @@ export class SearchComponent implements OnInit {
 
 	constructor(private dataService: DataService) {}
 
-	ngOnInit() {
-		this.dataService.fetchTopTen();
-	}
+	ngOnInit() {}
 
 	onSubmit() {
 		this.dataService.searchTracks(this.searchValue);
-		this.searchValue = null;
 	}
 }

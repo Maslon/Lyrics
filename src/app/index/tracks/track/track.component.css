@@ -24,7 +24,8 @@
 	font-size: 0.8rem;
 }
 
-.view-button {
+.view-button,
+.notAvailable {
 	padding: 0.2rem;
 	margin-top: auto;
 	margin-bottom: 0.2rem;
@@ -37,6 +38,10 @@
 	border-radius: 5px;
 	align-self: center;
 	transition: all .5s ease-out;
+}
+
+.notAvailable {
+	background-color: #48474b;
 }
 
 .view-button:hover {
